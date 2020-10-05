@@ -34,8 +34,8 @@ namespace BeerSys.Forms
                 }
             }
             //MUDAR AS CORES DOS LABELS EM CADA FORM
-            //lblTest1.ForeColor = ThemeColor.SecondaryColor;
-            //lblTest2.ForeColor = ThemeColor.PrimaryColor;
+            lblTest1.ForeColor = ThemeColor.SecondaryColor;
+            lblTest2.ForeColor = ThemeColor.PrimaryColor;
         }
     }
 }

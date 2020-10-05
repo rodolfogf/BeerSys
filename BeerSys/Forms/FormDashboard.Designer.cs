@@ -37,21 +37,21 @@
             // 
             this.lblTest1.AutoSize = true;
             this.lblTest1.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblTest1.Location = new System.Drawing.Point(53, 52);
+            this.lblTest1.Location = new System.Drawing.Point(359, 164);
             this.lblTest1.Name = "lblTest1";
-            this.lblTest1.Size = new System.Drawing.Size(123, 21);
+            this.lblTest1.Size = new System.Drawing.Size(87, 21);
             this.lblTest1.TabIndex = 0;
-            this.lblTest1.Text = "COR PRIMARIA";
+            this.lblTest1.Text = "EM BREVE";
             // 
             // lblTest2
             // 
             this.lblTest2.AutoSize = true;
             this.lblTest2.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblTest2.Location = new System.Drawing.Point(54, 98);
+            this.lblTest2.Location = new System.Drawing.Point(359, 272);
             this.lblTest2.Name = "lblTest2";
-            this.lblTest2.Size = new System.Drawing.Size(148, 21);
+            this.lblTest2.Size = new System.Drawing.Size(87, 21);
             this.lblTest2.TabIndex = 1;
-            this.lblTest2.Text = "COR SECUNDÁRIA";
+            this.lblTest2.Text = "EM BREVE";
             // 
             // FormDashboard
             // 

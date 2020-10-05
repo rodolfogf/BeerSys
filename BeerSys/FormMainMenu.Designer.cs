@@ -31,7 +31,7 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FormMainMenu));
             this.panelMenu = new System.Windows.Forms.Panel();
             this.btnConfiguracoes = new System.Windows.Forms.Button();
-            this.btnNotificações = new System.Windows.Forms.Button();
+            this.btnNotificacoes = new System.Windows.Forms.Button();
             this.btnVenda = new System.Windows.Forms.Button();
             this.btnEstoque = new System.Windows.Forms.Button();
             this.btnNovoRotulo = new System.Windows.Forms.Button();
@@ -41,6 +41,11 @@
             this.panelTitleBar = new System.Windows.Forms.Panel();
             this.lblTitle = new System.Windows.Forms.Label();
             this.panelDesktopPane = new System.Windows.Forms.Panel();
+            this.txtSenha = new System.Windows.Forms.TextBox();
+            this.btnEntrar = new System.Windows.Forms.Button();
+            this.lblSenha = new System.Windows.Forms.Label();
+            this.lblNome = new System.Windows.Forms.Label();
+            this.txtNome = new System.Windows.Forms.TextBox();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.panelMenu.SuspendLayout();
             this.panelLogo.SuspendLayout();
@@ -53,7 +58,7 @@
             // 
             this.panelMenu.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(51)))), ((int)(((byte)(51)))), ((int)(((byte)(76)))));
             this.panelMenu.Controls.Add(this.btnConfiguracoes);
-            this.panelMenu.Controls.Add(this.btnNotificações);
+            this.panelMenu.Controls.Add(this.btnNotificacoes);
             this.panelMenu.Controls.Add(this.btnVenda);
             this.panelMenu.Controls.Add(this.btnEstoque);
             this.panelMenu.Controls.Add(this.btnNovoRotulo);
@@ -84,24 +89,24 @@
             this.btnConfiguracoes.UseVisualStyleBackColor = true;
             this.btnConfiguracoes.Click += new System.EventHandler(this.btnConfiguracoes_Click);
             // 
-            // btnNotificações
+            // btnNotificacoes
             // 
-            this.btnNotificações.Dock = System.Windows.Forms.DockStyle.Top;
-            this.btnNotificações.FlatAppearance.BorderSize = 0;
-            this.btnNotificações.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnNotificações.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnNotificações.ForeColor = System.Drawing.Color.Gainsboro;
-            this.btnNotificações.Image = ((System.Drawing.Image)(resources.GetObject("btnNotificações.Image")));
-            this.btnNotificações.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnNotificações.Location = new System.Drawing.Point(0, 320);
-            this.btnNotificações.Name = "btnNotificações";
-            this.btnNotificações.Padding = new System.Windows.Forms.Padding(12, 0, 0, 0);
-            this.btnNotificações.Size = new System.Drawing.Size(220, 60);
-            this.btnNotificações.TabIndex = 5;
-            this.btnNotificações.Text = "  Notificações";
-            this.btnNotificações.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
-            this.btnNotificações.UseVisualStyleBackColor = true;
-            this.btnNotificações.Click += new System.EventHandler(this.btnNotificações_Click);
+            this.btnNotificacoes.Dock = System.Windows.Forms.DockStyle.Top;
+            this.btnNotificacoes.FlatAppearance.BorderSize = 0;
+            this.btnNotificacoes.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnNotificacoes.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnNotificacoes.ForeColor = System.Drawing.Color.Gainsboro;
+            this.btnNotificacoes.Image = ((System.Drawing.Image)(resources.GetObject("btnNotificacoes.Image")));
+            this.btnNotificacoes.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnNotificacoes.Location = new System.Drawing.Point(0, 320);
+            this.btnNotificacoes.Name = "btnNotificacoes";
+            this.btnNotificacoes.Padding = new System.Windows.Forms.Padding(12, 0, 0, 0);
+            this.btnNotificacoes.Size = new System.Drawing.Size(220, 60);
+            this.btnNotificacoes.TabIndex = 5;
+            this.btnNotificacoes.Text = "  Notificações";
+            this.btnNotificacoes.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.btnNotificacoes.UseVisualStyleBackColor = true;
+            this.btnNotificacoes.Click += new System.EventHandler(this.btnNotificações_Click);
             // 
             // btnVenda
             // 
@@ -219,7 +224,7 @@
             this.lblTitle.Name = "lblTitle";
             this.lblTitle.Size = new System.Drawing.Size(680, 80);
             this.lblTitle.TabIndex = 0;
-            this.lblTitle.Text = "LOGIN";
+            this.lblTitle.Text = "ACESSO";
             this.lblTitle.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             this.lblTitle.MouseDown += new System.Windows.Forms.MouseEventHandler(this.lblTitle_MouseDown);
             // 
@@ -227,12 +232,77 @@
             // 
             this.panelDesktopPane.BackColor = System.Drawing.SystemColors.Control;
             this.panelDesktopPane.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.panelDesktopPane.Controls.Add(this.txtSenha);
+            this.panelDesktopPane.Controls.Add(this.btnEntrar);
+            this.panelDesktopPane.Controls.Add(this.lblSenha);
+            this.panelDesktopPane.Controls.Add(this.lblNome);
+            this.panelDesktopPane.Controls.Add(this.txtNome);
             this.panelDesktopPane.Controls.Add(this.pictureBox1);
             this.panelDesktopPane.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panelDesktopPane.Location = new System.Drawing.Point(220, 80);
             this.panelDesktopPane.Name = "panelDesktopPane";
             this.panelDesktopPane.Size = new System.Drawing.Size(680, 420);
             this.panelDesktopPane.TabIndex = 2;
+            // 
+            // txtSenha
+            // 
+            this.txtSenha.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.txtSenha.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtSenha.Location = new System.Drawing.Point(233, 218);
+            this.txtSenha.Name = "txtSenha";
+            this.txtSenha.PasswordChar = '*';
+            this.txtSenha.Size = new System.Drawing.Size(214, 25);
+            this.txtSenha.TabIndex = 2;
+            this.txtSenha.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtSenha_KeyDown);
+            // 
+            // btnEntrar
+            // 
+            this.btnEntrar.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.btnEntrar.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(150)))), ((int)(((byte)(136)))));
+            this.btnEntrar.FlatAppearance.BorderSize = 0;
+            this.btnEntrar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnEntrar.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnEntrar.ForeColor = System.Drawing.Color.White;
+            this.btnEntrar.Location = new System.Drawing.Point(299, 267);
+            this.btnEntrar.Name = "btnEntrar";
+            this.btnEntrar.Size = new System.Drawing.Size(82, 33);
+            this.btnEntrar.TabIndex = 3;
+            this.btnEntrar.Text = "Entrar";
+            this.btnEntrar.UseVisualStyleBackColor = false;
+            this.btnEntrar.Click += new System.EventHandler(this.btnEntrar_Click);
+            // 
+            // lblSenha
+            // 
+            this.lblSenha.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.lblSenha.AutoSize = true;
+            this.lblSenha.Font = new System.Drawing.Font("Segoe UI Semibold", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblSenha.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(150)))), ((int)(((byte)(136)))));
+            this.lblSenha.Location = new System.Drawing.Point(230, 198);
+            this.lblSenha.Name = "lblSenha";
+            this.lblSenha.Size = new System.Drawing.Size(45, 17);
+            this.lblSenha.TabIndex = 4;
+            this.lblSenha.Text = "Senha";
+            // 
+            // lblNome
+            // 
+            this.lblNome.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.lblNome.AutoSize = true;
+            this.lblNome.Font = new System.Drawing.Font("Segoe UI Semibold", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblNome.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(150)))), ((int)(((byte)(136)))));
+            this.lblNome.Location = new System.Drawing.Point(230, 138);
+            this.lblNome.Name = "lblNome";
+            this.lblNome.Size = new System.Drawing.Size(45, 17);
+            this.lblNome.TabIndex = 3;
+            this.lblNome.Text = "Nome";
+            // 
+            // txtNome
+            // 
+            this.txtNome.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtNome.ForeColor = System.Drawing.SystemColors.WindowText;
+            this.txtNome.Location = new System.Drawing.Point(233, 158);
+            this.txtNome.Name = "txtNome";
+            this.txtNome.Size = new System.Drawing.Size(214, 25);
+            this.txtNome.TabIndex = 1;
             // 
             // pictureBox1
             // 
@@ -261,11 +331,13 @@
             this.Name = "FormMainMenu";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "FormMainMenu";
+            this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.FormMainMenu_FormClosed);
             this.panelMenu.ResumeLayout(false);
             this.panelLogo.ResumeLayout(false);
             this.panelLogo.PerformLayout();
             this.panelTitleBar.ResumeLayout(false);
             this.panelDesktopPane.ResumeLayout(false);
+            this.panelDesktopPane.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.ResumeLayout(false);
 
@@ -277,7 +349,7 @@
         private System.Windows.Forms.Panel panelLogo;
         private System.Windows.Forms.Button btnDashBoard;
         private System.Windows.Forms.Button btnConfiguracoes;
-        private System.Windows.Forms.Button btnNotificações;
+        private System.Windows.Forms.Button btnNotificacoes;
         private System.Windows.Forms.Button btnVenda;
         private System.Windows.Forms.Button btnEstoque;
         private System.Windows.Forms.Button btnNovoRotulo;
@@ -286,6 +358,11 @@
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Panel panelDesktopPane;
         private System.Windows.Forms.PictureBox pictureBox1;
+        private System.Windows.Forms.Label lblSenha;
+        private System.Windows.Forms.Label lblNome;
+        private System.Windows.Forms.TextBox txtNome;
+        private System.Windows.Forms.Button btnEntrar;
+        private System.Windows.Forms.TextBox txtSenha;
     }
 }
 

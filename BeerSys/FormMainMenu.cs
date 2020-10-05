@@ -4,15 +4,25 @@ using System.ComponentModel;
 using System.Data;
 using System.Drawing;
 using System.Linq;
+using System.Media;
 using System.Runtime.InteropServices;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using MySql.Data.MySqlClient;
+
 
 namespace BeerSys
 {
     public partial class FormMainMenu : Form
     {
+        //public static System.Media.SystemSound Beep { get; }
+        //Mysql
+        MySqlConnection conexao;
+        MySqlCommand comando;
+        MySqlDataAdapter da;
+        //MySqlDataReader dr;
+        string strSQL;
         //Fields
         private Button currentButton;
         private Random random;
@@ -25,19 +35,53 @@ namespace BeerSys
             InitializeComponent();
             random = new Random();
             this.Text = string.Empty;
+            DisableAllButtons();
+
+            try
+            {
+                conexao = new MySqlConnection("Server=localhost;Database=beersys;Uid=root;Pwd=;");
+                conexao.Open();
+                //MessageBox.Show("Conectado com sucesso!");
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
 
             //CASO FOR USAR SEM A BORDA DO WINDOWS
             //this.ControlBox = false;
             //this.MaximizedBounds = Screen.FromHandle(this.Handle).WorkingArea;
         }
-        
-       /*SERVE PARA ARRASTAR O PROBRAMA USANDO A BARRA
-        [DllImport("user32.DLL", EntryPoint = "ReleaseCapture")]
-        private extern static void ReleaseCapture();
-        [DllImport("user32.DLL", EntryPoint = "SendMessage")]
-        private extern static void SendMessage(System.IntPtr hWnd, int wMsg, int wParam, int lParam);
-       */
+
+        /*SERVE PARA ARRASTAR O PROBRAMA USANDO A BARRA
+         [DllImport("user32.DLL", EntryPoint = "ReleaseCapture")]
+         private extern static void ReleaseCapture();
+         [DllImport("user32.DLL", EntryPoint = "SendMessage")]
+         private extern static void SendMessage(System.IntPtr hWnd, int wMsg, int wParam, int lParam);
+        */
         //Methods
+
+        //MÉTODO DESATIVAR BOTÕES
+        private void DisableAllButtons()
+        {
+            btnDashBoard.Enabled = false;
+            btnNovoRotulo.Enabled = false;
+            btnEstoque.Enabled = false;
+            btnVenda.Enabled = false;
+            btnNotificacoes.Enabled = false;
+            btnConfiguracoes.Enabled = false;
+        }
+
+        //MÉTODO ATIVAR BOTÕES
+        private void EnableAllButtons()
+        {
+            btnDashBoard.Enabled = true;
+            btnNovoRotulo.Enabled = true;
+            btnEstoque.Enabled = true;
+            btnVenda.Enabled = true;
+            btnNotificacoes.Enabled = true;
+            btnConfiguracoes.Enabled = true;
+        }
         private Color SelectThemeColor()
         {
             int index = random.Next(ThemeColor.ColorList.Count);
@@ -108,6 +152,7 @@ namespace BeerSys
         private void btnNovoRotulo_Click(object sender, EventArgs e)
         {
             OpenChildForm(new Forms.FormNovoRotulo(), sender);
+
         }
 
         private void btnEstoque_Click(object sender, EventArgs e)
@@ -136,5 +181,59 @@ namespace BeerSys
             //SendMessage(this.Handle, 0x112, 0xf012, 0);
         }
 
+        public void btnEntrar_Click(object sender, EventArgs e)
+        {
+            strSQL = "select count(*) from user where name_user = '"+txtNome.Text+"' and password_user ='"+txtSenha.Text+"'";
+            comando = new MySqlCommand(strSQL, conexao);
+            DataTable dataTable = new DataTable();
+            da = new MySqlDataAdapter(comando);
+            da.Fill(dataTable);
+            
+            //VERIFICAÇÃO SE EXISTE O USUARIO NO BANCO DE DADOS
+            foreach(DataRow list in dataTable.Rows)
+            {
+                if (Convert.ToInt32(list.ItemArray[0]) > 0)
+                {
+                    OpenChildForm(new Forms.FormDashboard(), sender);
+                    EnableAllButtons();
+                    //MessageBox.Show("Usuário validado");
+                    SoundPlayer simpleSound = new SoundPlayer(@"C:\Users\sidne\source\repos\BeerSys\BeerSys\sounds\Beer1.wav");
+                    simpleSound.Play();
+                    //Corrigir erro de caixa de texto fantasma
+                    txtNome.Dispose();
+                    txtSenha.Dispose();
+                    conexao.Close();
+                    this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
+                    this.MaximizeBox = false;
+                }
+                else
+                {
+                    MessageBox.Show("Usuário inválido", "Validação", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                }
+            }
+        }
+
+        private void FormMainMenu_FormClosed(object sender, FormClosedEventArgs e)
+        {
+            conexao.Close();
+        }
+
+
+        //ENTER NA CAIXA DE TEXTO
+        private void txtSenha_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter)
+            {
+                e.Handled = true;
+                e.SuppressKeyPress = true;
+
+                btnEntrar.PerformClick();
+                //NoFocusCueButton();
+            }
+            else
+            {
+                base.OnKeyDown(e);
+            }
+        }
     }
 }
